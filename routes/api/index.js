@@ -1,8 +1,5 @@
-const router = require("express").Router();
-const noteRoutes = require("./notes");
-const linkRoutes = require("./links");
-
-router.use("/notes", noteRoutes);
-router.use("/links", linkRoutes);
+const router = require('express').Router(); // eslint-disable-line new-cap
+const noteRoutes = require('./notes');
+router.use('/notes', noteRoutes);
 
 module.exports = router;

@@ -1,24 +1,29 @@
-// Controller for our notes
-// ========================
-var db = require("../models");
+const db = require('../models');
 
 module.exports = {
-  // Find one note
-  find: function(req, res) {
-    db.Note.find({ _headlineId: req.params.id }).then(function(dbNote) {
-      res.json(dbNote);
+  findAll: (req, res) => {
+    db.findAll({}).then((result) => {
+      res.json(result);
     });
   },
-  // Create a new note
-  create: function(req, res) {
-    db.Note.create(req.body).then(function(dbNote) {
-      res.json(dbNote);
+  findOne: (req, res) => {
+    res.json({
+      msg: `Find One: ${req.params.id}`,
     });
   },
-  // Delete a note with a given id
-  delete: function(req, res) {
-    db.Note.remove({ _id: req.params.id }).then(function(dbNote) {
-      res.json(dbNote);
+  create: (req, res) => {
+    res.json({
+      msg: 'Create One',
     });
-  }
+  },
+  update: (req, res) => {
+    res.json({
+      msg: 'Update One: ${req.params.id}',
+    });
+  },
+  delete: (req, res) => {
+    res.json({
+      msg: `Delete One: ${req.params.id}`,
+    });
+  },
 };
