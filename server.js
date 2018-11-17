@@ -1,24 +1,35 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+const express = require('express');
+const db = require('./models');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 const server = express();
 
-const routes = require("./routes");
+const routes = require('./routes');
 
-server.use(express.static('public'));
-
-server.use(bodyParser.urlencoded({ extended: true }));
-server.use(bodyParser.json());
+server.use(express.urlencoded({extended: true}));
+server.use(express.json());
+server.use(express.static('client/dist'));
 server.use(routes);
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/bookmarks-fyi";
-
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
-
-// Listen on the port
-server.listen(PORT, function() {
-  console.log("Listening on port: " + PORT);
+// Catch-all route
+server.get('*', (req, res) => {
+  res.redirect('/');
 });
+
+const syncOptions = {force: false};
+
+// If running a test, set syncOptions.force to true
+// clearing the `testdb`
+if (process.env.NODE_ENV === 'test') {
+  syncOptions.force = true;
+}
+
+// Starting the server, syncing our models ------------------------------------/
+db.sequelize.sync(syncOptions).then(() => {
+  server.listen(PORT, () => {
+    console.log('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT, PORT);
+  });
+});
+
+module.exports = server;
