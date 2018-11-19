@@ -1,5 +1,5 @@
 const router = require('express').Router(); // eslint-disable-line new-cap
-const noteController = require('../../controllers/note');
+const noteController = require('../../controllers/example');
 
 router.get('/', noteController.findAll);
 router.get('/:id', noteController.findOne);

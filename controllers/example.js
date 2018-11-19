@@ -2,8 +2,8 @@ const db = require('../models');
 
 module.exports = {
   findAll: (req, res) => {
-    db.findAll({}).then((result) => {
-      res.json(result);
+    db.Example.findAll({}).then((results) => {
+      res.json(results);
     });
   },
   findOne: (req, res) => {
@@ -12,8 +12,8 @@ module.exports = {
     });
   },
   create: (req, res) => {
-    res.json({
-      msg: 'Create One',
+    db.Example.create(req.body).then((results) => {
+      res.json(results);
     });
   },
   update: (req, res) => {
@@ -22,8 +22,8 @@ module.exports = {
     });
   },
   delete: (req, res) => {
-    res.json({
-      msg: `Delete One: ${req.params.id}`,
+    db.Example.destroy({where: {id: req.params.id}}).then((results) => {
+      res.json(results);
     });
   },
 };
