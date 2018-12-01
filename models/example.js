@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
-  const Example = sequelize.define('Example', {
+  const Reviews = sequelize.define('Reviews', {
     text: DataTypes.STRING,
     description: DataTypes.TEXT,
   });
-  return Example;
+  return Reviews;
 };
