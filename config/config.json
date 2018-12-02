@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "AJUaru2968648**",
     "database": "beerquest",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "AJUaru2968648**",
     "database": "beerquest",
     "host": "localhost",
     "dialect": "mysql",

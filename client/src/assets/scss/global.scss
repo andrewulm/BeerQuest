@@ -1,0 +1,26 @@
+$footer-height: 200px;
+$beer-color: #F0C030;
+
+html {
+  min-height: 100%;
+  position: relative;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #343a40;
+  }
+
+  body {
+    margin-bottom: $footer-height;
+  }
+
+  .footer {
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    height: $footer-height;
+  }
+
+  .content {
+    padding: 40px 0;
+  }
+}
