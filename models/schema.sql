@@ -1,6 +1,8 @@
-DROP DATABASE IF EXISTS beerquest_db;
+DROP DATABASE IF EXISTS brewmaster_db;
 
 CREATE DATABASE brewmaster_db;
+
+USE brewmaster_db;
 
 CREATE TABLE reviews (
 review_id INT NOT NULL AUTO_INCREMENT,
